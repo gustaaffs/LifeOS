@@ -163,6 +163,15 @@
       "value": 125,
       "active": true,
       "plan": "7buv3di"
+    },
+    {
+      "id": "7r76ysg",
+      "name": "Acordo (Inter)",
+      "type": "expense",
+      "category": "Dívida",
+      "owner": "maria",
+      "value": 385.04,
+      "active": true
     }
   ],
   "cardExpenses": [
