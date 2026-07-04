@@ -87,6 +87,18 @@
       "projected": 444.78,
       "actual": 444.78,
       "note": ""
+    },
+    {
+      "id": "x57d6l5",
+      "name": "MercPago",
+      "type": "expense",
+      "category": "Dívida",
+      "owner": "gus",
+      "plan": null,
+      "month": "2026-07",
+      "projected": 447.57,
+      "actual": 428.11,
+      "note": ""
     }
   ],
   "recurring": [
@@ -290,7 +302,7 @@
       "id": "0wrennt",
       "cardId": "bxbc0a7",
       "month": "2026-07",
-      "value": 2322.88,
+      "value": 2430.92,
       "note": ""
     },
     {
