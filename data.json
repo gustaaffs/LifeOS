@@ -169,6 +169,16 @@
       "value": 125,
       "active": true,
       "plan": "7buv3di"
+    },
+    {
+      "id": "976hrlt",
+      "name": "Cartão Inter",
+      "type": "expense",
+      "category": "Dívida",
+      "owner": "maria",
+      "plan": "7buv3di",
+      "value": 385.04,
+      "active": true
     }
   ],
   "cardExpenses": [
