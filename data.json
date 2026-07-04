@@ -66,7 +66,13 @@
     },
     "2026-07": {
       "salaryGus": 3000,
-      "salaryMaria": 4000
+      "salaryMaria": 4000,
+      "recurOverrides": {
+        "829a45a": 1533.4,
+        "1pzwjp9": 119.9,
+        "2hqg864": 67.93,
+        "xkjc1ll": 227.25
+      }
     }
   },
   "entries": [
@@ -101,7 +107,7 @@
       "category": "Casa",
       "type": "expense",
       "owner": "gus",
-      "active": true,
+      "active": false,
       "plan": "7buv3di"
     },
     {
