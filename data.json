@@ -87,30 +87,6 @@
       "projected": 444.78,
       "actual": 444.78,
       "note": ""
-    },
-    {
-      "id": "x57d6l5",
-      "name": "MercPago",
-      "type": "expense",
-      "category": "Dívida",
-      "owner": "gus",
-      "plan": null,
-      "month": "2026-07",
-      "projected": 447.57,
-      "actual": 428.11,
-      "note": ""
-    },
-    {
-      "id": "w5cgpqu",
-      "name": "MercPago",
-      "type": "expense",
-      "category": "Dívida",
-      "owner": "gus",
-      "plan": "7buv3di",
-      "month": "2026-08",
-      "projected": 0,
-      "actual": 27.56,
-      "note": ""
     }
   ],
   "recurring": [
@@ -286,7 +262,7 @@
       "id": "o30oyhk",
       "cardId": "9che2rf",
       "month": "2026-08",
-      "value": 434.79,
+      "value": 33.21,
       "note": ""
     },
     {
@@ -314,7 +290,7 @@
       "id": "0wrennt",
       "cardId": "bxbc0a7",
       "month": "2026-07",
-      "value": 2430.92,
+      "value": 2322.88,
       "note": ""
     },
     {
@@ -328,7 +304,7 @@
       "id": "em0adb9",
       "cardId": "9q0i9wu",
       "month": "2026-08",
-      "value": 557.01,
+      "value": 175.84,
       "note": ""
     },
     {
@@ -346,38 +322,10 @@
       "note": ""
     },
     {
-      "id": "2ll68qi",
-      "cardId": "bxbc0a7",
-      "month": "2026-08",
-      "value": 220.38,
-      "note": ""
-    },
-    {
-      "id": "2j8ajhn",
-      "cardId": "bxbc0a7",
-      "month": "2026-09",
-      "value": 177.57,
-      "note": ""
-    },
-    {
-      "id": "j9o4fuw",
-      "cardId": "bxbc0a7",
-      "month": "2026-10",
-      "value": 177.57,
-      "note": ""
-    },
-    {
-      "id": "0dxu8hx",
-      "cardId": "bxbc0a7",
-      "month": "2026-11",
-      "value": 177.57,
-      "note": ""
-    },
-    {
-      "id": "7gizk5t",
+      "id": "nzmxkla",
       "cardId": "6oq7j79",
       "month": "2026-08",
-      "value": 373.4,
+      "value": 430.5,
       "note": ""
     }
   ],
