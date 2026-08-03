@@ -89,14 +89,28 @@
       "note": ""
     },
     {
-      "id": "zlovy82",
-      "name": "Cartão Bradesco",
+      "id": "x57d6l5",
+      "name": "MercPago",
       "type": "expense",
-      "category": "Cartão",
-      "owner": "maria",
-      "month": "2026-09",
-      "projected": 492.06,
-      "actual": 492.06
+      "category": "Dívida",
+      "owner": "gus",
+      "plan": null,
+      "month": "2026-07",
+      "projected": 447.57,
+      "actual": 428.11,
+      "note": ""
+    },
+    {
+      "id": "w5cgpqu",
+      "name": "MercPago",
+      "type": "expense",
+      "category": "Dívida",
+      "owner": "gus",
+      "plan": "7buv3di",
+      "month": "2026-08",
+      "projected": 0,
+      "actual": 27.56,
+      "note": ""
     }
   ],
   "recurring": [
@@ -251,13 +265,6 @@
       "color": "#00b054",
       "closingDay": 2,
       "owner": "maria"
-    },
-    {
-      "id": "qqsr3a8",
-      "name": "Cartão Bradesco",
-      "color": "#ed2000",
-      "closingDay": 10,
-      "owner": "maria"
     }
   ],
   "cardInvoices": [
@@ -279,7 +286,7 @@
       "id": "o30oyhk",
       "cardId": "9che2rf",
       "month": "2026-08",
-      "value": 33.21,
+      "value": 434.79,
       "note": ""
     },
     {
@@ -307,7 +314,7 @@
       "id": "0wrennt",
       "cardId": "bxbc0a7",
       "month": "2026-07",
-      "value": 2322.88,
+      "value": 2430.92,
       "note": ""
     },
     {
@@ -321,7 +328,7 @@
       "id": "em0adb9",
       "cardId": "9q0i9wu",
       "month": "2026-08",
-      "value": 175.84,
+      "value": 557.01,
       "note": ""
     },
     {
@@ -339,24 +346,38 @@
       "note": ""
     },
     {
-      "id": "nzmxkla",
+      "id": "2ll68qi",
+      "cardId": "bxbc0a7",
+      "month": "2026-08",
+      "value": 220.38,
+      "note": ""
+    },
+    {
+      "id": "2j8ajhn",
+      "cardId": "bxbc0a7",
+      "month": "2026-09",
+      "value": 177.57,
+      "note": ""
+    },
+    {
+      "id": "j9o4fuw",
+      "cardId": "bxbc0a7",
+      "month": "2026-10",
+      "value": 177.57,
+      "note": ""
+    },
+    {
+      "id": "0dxu8hx",
+      "cardId": "bxbc0a7",
+      "month": "2026-11",
+      "value": 177.57,
+      "note": ""
+    },
+    {
+      "id": "7gizk5t",
       "cardId": "6oq7j79",
       "month": "2026-08",
-      "value": 430.5,
-      "note": ""
-    },
-    {
-      "id": "rxxyjn9",
-      "cardId": "qqsr3a8",
-      "month": "2026-08",
-      "value": 0,
-      "note": ""
-    },
-    {
-      "id": "we7jixw",
-      "cardId": "qqsr3a8",
-      "month": "2026-09",
-      "value": 492.06,
+      "value": 373.4,
       "note": ""
     }
   ],
