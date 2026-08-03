@@ -251,6 +251,13 @@
       "color": "#00b054",
       "closingDay": 2,
       "owner": "maria"
+    },
+    {
+      "id": "qqsr3a8",
+      "name": "Cartão Bradesco",
+      "color": "#ed2000",
+      "closingDay": 10,
+      "owner": "maria"
     }
   ],
   "cardInvoices": [
@@ -336,6 +343,20 @@
       "cardId": "6oq7j79",
       "month": "2026-08",
       "value": 430.5,
+      "note": ""
+    },
+    {
+      "id": "rxxyjn9",
+      "cardId": "qqsr3a8",
+      "month": "2026-08",
+      "value": 0,
+      "note": ""
+    },
+    {
+      "id": "we7jixw",
+      "cardId": "qqsr3a8",
+      "month": "2026-09",
+      "value": 492.06,
       "note": ""
     }
   ],
