@@ -87,6 +87,16 @@
       "projected": 444.78,
       "actual": 444.78,
       "note": ""
+    },
+    {
+      "id": "zlovy82",
+      "name": "Cartão Bradesco",
+      "type": "expense",
+      "category": "Cartão",
+      "owner": "maria",
+      "month": "2026-09",
+      "projected": 492.06,
+      "actual": 492.06
     }
   ],
   "recurring": [
