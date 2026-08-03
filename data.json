@@ -73,6 +73,10 @@
         "2hqg864": 67.93,
         "xkjc1ll": 227.25
       }
+    },
+    "2026-08": {
+      "salaryGus": 3000,
+      "salaryMaria": 4000
     }
   },
   "entries": [
@@ -89,28 +93,24 @@
       "note": ""
     },
     {
-      "id": "x57d6l5",
-      "name": "MercPago",
+      "id": "zlovy82",
+      "name": "Cartão Bradesco",
       "type": "expense",
-      "category": "Dívida",
-      "owner": "gus",
-      "plan": null,
-      "month": "2026-07",
-      "projected": 447.57,
-      "actual": 428.11,
-      "note": ""
+      "category": "Cartão",
+      "owner": "maria",
+      "month": "2026-09",
+      "projected": 492.06,
+      "actual": 492.06
     },
     {
-      "id": "w5cgpqu",
-      "name": "MercPago",
+      "id": "gqb4ikd",
+      "name": "Mercado Pago",
       "type": "expense",
       "category": "Dívida",
       "owner": "gus",
-      "plan": "7buv3di",
       "month": "2026-08",
-      "projected": 0,
-      "actual": 27.56,
-      "note": ""
+      "projected": 89,
+      "actual": 89
     }
   ],
   "recurring": [
@@ -265,6 +265,13 @@
       "color": "#00b054",
       "closingDay": 2,
       "owner": "maria"
+    },
+    {
+      "id": "qqsr3a8",
+      "name": "Cartão Bradesco",
+      "color": "#ed2000",
+      "closingDay": 10,
+      "owner": "maria"
     }
   ],
   "cardInvoices": [
@@ -286,35 +293,35 @@
       "id": "o30oyhk",
       "cardId": "9che2rf",
       "month": "2026-08",
-      "value": 434.79,
+      "value": 1016.83,
       "note": ""
     },
     {
       "id": "fo2bnps",
       "cardId": "9che2rf",
       "month": "2026-09",
-      "value": 33.21,
+      "value": 214.42,
       "note": ""
     },
     {
       "id": "1fsjv1c",
       "cardId": "9che2rf",
       "month": "2026-10",
-      "value": 33.21,
+      "value": 210.07,
       "note": ""
     },
     {
       "id": "7wyaefh",
       "cardId": "9che2rf",
       "month": "2026-11",
-      "value": 33.21,
+      "value": 210.07,
       "note": ""
     },
     {
       "id": "0wrennt",
       "cardId": "bxbc0a7",
       "month": "2026-07",
-      "value": 2430.92,
+      "value": 2322.88,
       "note": ""
     },
     {
@@ -328,14 +335,14 @@
       "id": "em0adb9",
       "cardId": "9q0i9wu",
       "month": "2026-08",
-      "value": 557.01,
+      "value": 3091.99,
       "note": ""
     },
     {
       "id": "ua5vduj",
       "cardId": "9q0i9wu",
       "month": "2026-09",
-      "value": 175.84,
+      "value": 521.84,
       "note": ""
     },
     {
@@ -346,38 +353,73 @@
       "note": ""
     },
     {
-      "id": "2ll68qi",
-      "cardId": "bxbc0a7",
+      "id": "nzmxkla",
+      "cardId": "6oq7j79",
       "month": "2026-08",
-      "value": 220.38,
+      "value": 430.5,
       "note": ""
     },
     {
-      "id": "2j8ajhn",
+      "id": "rxxyjn9",
+      "cardId": "qqsr3a8",
+      "month": "2026-08",
+      "value": 0,
+      "note": ""
+    },
+    {
+      "id": "we7jixw",
+      "cardId": "qqsr3a8",
+      "month": "2026-09",
+      "value": 492.06,
+      "note": ""
+    },
+    {
+      "id": "wemfqmd",
+      "cardId": "bxbc0a7",
+      "month": "2026-08",
+      "value": 430.36,
+      "note": ""
+    },
+    {
+      "id": "yows9tj",
       "cardId": "bxbc0a7",
       "month": "2026-09",
       "value": 177.57,
       "note": ""
     },
     {
-      "id": "j9o4fuw",
+      "id": "spitt7h",
       "cardId": "bxbc0a7",
       "month": "2026-10",
       "value": 177.57,
       "note": ""
     },
     {
-      "id": "0dxu8hx",
+      "id": "cb7eid9",
+      "cardId": "9q0i9wu",
+      "month": "2026-10",
+      "value": 126,
+      "note": ""
+    },
+    {
+      "id": "ybu87ko",
       "cardId": "bxbc0a7",
       "month": "2026-11",
       "value": 177.57,
       "note": ""
     },
     {
-      "id": "7gizk5t",
-      "cardId": "6oq7j79",
-      "month": "2026-08",
-      "value": 373.4,
+      "id": "dwx20zk",
+      "cardId": "9che2rf",
+      "month": "2026-12",
+      "value": 33.21,
+      "note": ""
+    },
+    {
+      "id": "oatquf4",
+      "cardId": "bxbc0a7",
+      "month": "2026-12",
+      "value": 0,
       "note": ""
     }
   ],
