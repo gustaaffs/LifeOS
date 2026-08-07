@@ -73,15 +73,6 @@
         "2hqg864": 67.93,
         "xkjc1ll": 227.25
       }
-    },
-    "2026-08": {
-      "salaryGus": 3000,
-      "salaryMaria": 5000,
-      "recurOverrides": {
-        "829a45a": 1534,
-        "1pzwjp9": 119,
-        "xkjc1ll": 200
-      }
     }
   },
   "entries": [
@@ -106,16 +97,6 @@
       "month": "2026-09",
       "projected": 492.06,
       "actual": 492.06
-    },
-    {
-      "id": "gqb4ikd",
-      "name": "Mercado Pago",
-      "type": "expense",
-      "category": "Dívida",
-      "owner": "gus",
-      "month": "2026-08",
-      "projected": 89,
-      "actual": 89
     }
   ],
   "recurring": [
@@ -136,7 +117,7 @@
       "category": "Casa",
       "type": "expense",
       "owner": "gus",
-      "active": true,
+      "active": false,
       "plan": "7buv3di"
     },
     {
@@ -298,28 +279,28 @@
       "id": "o30oyhk",
       "cardId": "9che2rf",
       "month": "2026-08",
-      "value": 1016.83,
+      "value": 33.21,
       "note": ""
     },
     {
       "id": "fo2bnps",
       "cardId": "9che2rf",
       "month": "2026-09",
-      "value": 214.42,
+      "value": 33.21,
       "note": ""
     },
     {
       "id": "1fsjv1c",
       "cardId": "9che2rf",
       "month": "2026-10",
-      "value": 210.07,
+      "value": 33.21,
       "note": ""
     },
     {
       "id": "7wyaefh",
       "cardId": "9che2rf",
       "month": "2026-11",
-      "value": 210.07,
+      "value": 33.21,
       "note": ""
     },
     {
@@ -340,14 +321,14 @@
       "id": "em0adb9",
       "cardId": "9q0i9wu",
       "month": "2026-08",
-      "value": 3091.99,
+      "value": 175.84,
       "note": ""
     },
     {
       "id": "ua5vduj",
       "cardId": "9q0i9wu",
       "month": "2026-09",
-      "value": 521.84,
+      "value": 175.84,
       "note": ""
     },
     {
@@ -375,56 +356,7 @@
       "id": "we7jixw",
       "cardId": "qqsr3a8",
       "month": "2026-09",
-      "value": 492.06,
-      "note": ""
-    },
-    {
-      "id": "wemfqmd",
-      "cardId": "bxbc0a7",
-      "month": "2026-08",
-      "value": 430.36,
-      "note": ""
-    },
-    {
-      "id": "yows9tj",
-      "cardId": "bxbc0a7",
-      "month": "2026-09",
-      "value": 177.57,
-      "note": ""
-    },
-    {
-      "id": "spitt7h",
-      "cardId": "bxbc0a7",
-      "month": "2026-10",
-      "value": 177.57,
-      "note": ""
-    },
-    {
-      "id": "cb7eid9",
-      "cardId": "9q0i9wu",
-      "month": "2026-10",
-      "value": 126,
-      "note": ""
-    },
-    {
-      "id": "ybu87ko",
-      "cardId": "bxbc0a7",
-      "month": "2026-11",
-      "value": 177.57,
-      "note": ""
-    },
-    {
-      "id": "dwx20zk",
-      "cardId": "9che2rf",
-      "month": "2026-12",
-      "value": 33.21,
-      "note": ""
-    },
-    {
-      "id": "oatquf4",
-      "cardId": "bxbc0a7",
-      "month": "2026-12",
-      "value": 0,
+      "value": 1221.04,
       "note": ""
     }
   ],
