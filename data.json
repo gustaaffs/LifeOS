@@ -97,6 +97,16 @@
       "month": "2026-09",
       "projected": 492.06,
       "actual": 492.06
+    },
+    {
+      "id": "su0klcb",
+      "name": "Creator ADS",
+      "type": "income",
+      "category": "Casa",
+      "owner": "maria",
+      "month": "2026-09",
+      "projected": 518,
+      "actual": 518
     }
   ],
   "recurring": [
