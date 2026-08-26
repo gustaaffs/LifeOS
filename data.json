@@ -73,6 +73,10 @@
         "2hqg864": 67.93,
         "xkjc1ll": 227.25
       }
+    },
+    "2026-09": {
+      "salaryGus": 3000,
+      "salaryMaria": 4823.32
     }
   },
   "entries": [
@@ -296,7 +300,7 @@
       "id": "fo2bnps",
       "cardId": "9che2rf",
       "month": "2026-09",
-      "value": 556.58,
+      "value": 33.21,
       "note": ""
     },
     {
@@ -338,7 +342,7 @@
       "id": "ua5vduj",
       "cardId": "9q0i9wu",
       "month": "2026-09",
-      "value": 2662.1,
+      "value": 175.84,
       "note": ""
     },
     {
@@ -374,13 +378,6 @@
       "cardId": "qqsr3a8",
       "month": "2026-10",
       "value": 435.48,
-      "note": ""
-    },
-    {
-      "id": "j95lu9z",
-      "cardId": "bxbc0a7",
-      "month": "2026-09",
-      "value": 421.22,
       "note": ""
     }
   ],
