@@ -294,7 +294,7 @@
       "id": "fo2bnps",
       "cardId": "9che2rf",
       "month": "2026-09",
-      "value": 33.21,
+      "value": 550.13,
       "note": ""
     },
     {
@@ -336,7 +336,7 @@
       "id": "ua5vduj",
       "cardId": "9q0i9wu",
       "month": "2026-09",
-      "value": 175.84,
+      "value": 2736.45,
       "note": ""
     },
     {
@@ -372,6 +372,13 @@
       "cardId": "qqsr3a8",
       "month": "2026-10",
       "value": 435.48,
+      "note": ""
+    },
+    {
+      "id": "9sjb9ld",
+      "cardId": "bxbc0a7",
+      "month": "2026-09",
+      "value": 421.22,
       "note": ""
     }
   ],
