@@ -76,14 +76,21 @@
     },
     "2026-09": {
       "salaryGus": 3000,
-      "salaryMaria": 4823.32
+      "salaryMaria": 5918,
+      "recurOverrides": {
+        "1pzwjp9": 119,
+        "xkjc1ll": 250,
+        "2hqg864": 67
+      }
     },
     "2026-08": {
       "recurOverrides": {
         "1pzwjp9": 119,
         "2hqg864": 66,
         "xkjc1ll": 250
-      }
+      },
+      "salaryGus": 3000,
+      "salaryMaria": 4000
     }
   },
   "entries": [
@@ -98,16 +105,6 @@
       "projected": 444.78,
       "actual": 444.78,
       "note": ""
-    },
-    {
-      "id": "zlovy82",
-      "name": "Cartão Bradesco",
-      "type": "expense",
-      "category": "Cartão",
-      "owner": "maria",
-      "month": "2026-09",
-      "projected": 492.06,
-      "actual": 492.06
     },
     {
       "id": "su0klcb",
