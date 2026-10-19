@@ -163,6 +163,19 @@ function renderConfigView() {
         </div>
       </div>
 
+      <!-- Instalar como Aplicativo PWA -->
+      <div class="surface-card p-6">
+        <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-2 flex items-center gap-2">
+          <i data-lucide="smartphone" class="w-4 h-4 text-emerald-400"></i> Aplicativo para Celular (PWA)
+        </h4>
+        <p class="text-xs text-slate-400 mb-4">
+          Instale o Life OS na tela inicial do seu celular para abrir como um aplicativo de verdade (sem barra de endereço do navegador).
+        </p>
+        <button class="btn btn-primary btn-sm" onclick="promptInstallPWA()">
+          <i data-lucide="download" class="w-3.5 h-3.5"></i> Instalar como Aplicativo
+        </button>
+      </div>
+
       <!-- Reset Geral -->
       <div class="surface-card p-6 border-rose-500/20">
         <h4 class="text-sm font-semibold uppercase tracking-wider text-rose-400 mb-2">Zona de Perigo</h4>
