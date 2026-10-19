@@ -66,23 +66,30 @@ function renderConfigView() {
 
   container.innerHTML = `
     <div class="max-w-2xl mx-auto space-y-6">
-      <!-- Identidade do Casal -->
+      <!-- Identidade do Casal & Salários Padrão -->
       <div class="surface-card p-6">
         <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-300 mb-4 flex items-center gap-2">
-          <i data-lucide="user-check" class="w-4 h-4 text-amber-400"></i> Identidade do Casal
+          <i data-lucide="user-check" class="w-4 h-4 text-amber-400"></i> Identidade & Salário Base Padrão
         </h4>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
             <label class="form-label">Nome 1</label>
-            <input type="text" id="cfgName1" value="${state.name1}" class="form-control">
+            <input type="text" id="cfgName1" value="${state.name1}" class="form-control mb-3">
+            <label class="form-label">Salário Padrão ${state.name1} (R$)</label>
+            <input type="number" step="0.01" id="cfgSal1" value="${state.salaries?.gus || 0}" class="form-control">
           </div>
           <div>
             <label class="form-label">Nome 2</label>
-            <input type="text" id="cfgName2" value="${state.name2}" class="form-control">
+            <input type="text" id="cfgName2" value="${state.name2}" class="form-control mb-3">
+            <label class="form-label">Salário Padrão ${state.name2} (R$)</label>
+            <input type="number" step="0.01" id="cfgSal2" value="${state.salaries?.maria || 0}" class="form-control">
           </div>
         </div>
+        <p class="text-[11px] text-slate-400 mb-4">
+          O salário padrão é aplicado automaticamente em todos os meses. Você pode alterar valores excepcionais mês a mês pelo Dashboard.
+        </p>
         <button class="btn btn-primary btn-sm" onclick="saveIdentityConfig()">
-          Salvar Identidade
+          Salvar Identidade & Salários
         </button>
       </div>
 
@@ -173,11 +180,18 @@ function renderConfigView() {
 function saveIdentityConfig() {
   const n1 = document.getElementById('cfgName1')?.value.trim();
   const n2 = document.getElementById('cfgName2')?.value.trim();
+  const s1 = parseFloat(document.getElementById('cfgSal1')?.value) || 0;
+  const s2 = parseFloat(document.getElementById('cfgSal2')?.value) || 0;
+
   if (n1) state.name1 = n1;
   if (n2) state.name2 = n2;
+  if (!state.salaries) state.salaries = {};
+  state.salaries.gus = s1;
+  state.salaries.maria = s2;
+
   saveState();
   updateBrandLabels();
-  showToast('Identidade atualizada com sucesso!', 'success');
+  showToast('Identidade e salários padrão atualizados!', 'success');
 }
 
 function saveGHConfig() {

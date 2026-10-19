@@ -306,6 +306,72 @@
     </div>
   </div>
 
+  <!-- Modal: Editar Salários (Padrão e Mensal) -->
+  <div class="modal-backdrop" id="modalSalaries">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="font-bold text-white text-base flex items-center gap-2">
+          <i data-lucide="wallet" class="w-4 h-4 text-amber-400"></i> Gestão de Salários & Renda
+        </h3>
+        <button class="btn btn-ghost btn-sm" onclick="closeModal('modalSalaries')"><i data-lucide="x" class="w-4 h-4"></i></button>
+      </div>
+      <form id="salariesForm" onsubmit="saveSalariesSubmit(event)">
+        <div class="modal-body space-y-6">
+          
+          <!-- Seção 1: Salário Específico do Mês Atual -->
+          <div class="p-4 rounded-xl bg-slate-900/80 border border-amber-500/30">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-mono font-bold uppercase text-amber-300 flex items-center gap-1.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Renda Específica deste Mês (<span id="salMonthTitle"></span>)
+              </span>
+            </div>
+            <p class="text-[11px] text-slate-400 mb-3">
+              Altere aqui se neste mês houve horas extras, comissões, bônus, férias ou descontos.
+            </p>
+            <div class="grid grid-cols-2 gap-3 mb-3">
+              <div>
+                <label class="form-label" id="lblMonthSalGus">Gus (R$)</label>
+                <input type="number" step="0.01" id="inputMonthSalGus" placeholder="0.00" class="form-control text-sm">
+              </div>
+              <div>
+                <label class="form-label" id="lblMonthSalMaria">Maria (R$)</label>
+                <input type="number" step="0.01" id="inputMonthSalMaria" placeholder="0.00" class="form-control text-sm">
+              </div>
+            </div>
+            <button type="button" class="text-[11px] text-slate-400 hover:text-amber-300 underline" onclick="resetMonthSalariesToDefault()">
+              Restaurar para salário padrão neste mês
+            </button>
+          </div>
+
+          <!-- Seção 2: Salário Base Padrão -->
+          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800">
+            <span class="text-xs font-mono font-bold uppercase text-slate-300 flex items-center gap-1.5 mb-1">
+              <i data-lucide="shield" class="w-3.5 h-3.5 text-sky-400"></i> Salário Base Padrão (Fixo)
+            </span>
+            <p class="text-[11px] text-slate-400 mb-3">
+              Valor fixo habitual aplicado automaticamente a todos os meses quando não houver ajuste.
+            </p>
+            <div class="grid grid-cols-2 gap-3">
+              <div>
+                <label class="form-label" id="lblDefSalGus">Padrão Gus (R$)</label>
+                <input type="number" step="0.01" id="inputDefSalGus" placeholder="0.00" class="form-control text-sm">
+              </div>
+              <div>
+                <label class="form-label" id="lblDefSalMaria">Padrão Maria (R$)</label>
+                <input type="number" step="0.01" id="inputDefSalMaria" placeholder="0.00" class="form-control text-sm">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('modalSalaries')">Cancelar</button>
+          <button type="submit" class="btn btn-primary btn-sm">Salvar Salários</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- TOAST CONTAINER -->
   <div id="toastContainer" class="toast-container"></div>
 

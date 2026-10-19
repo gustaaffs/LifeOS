@@ -2,25 +2,45 @@
   "name1": "Gus",
   "name2": "Maria",
   "salaries": {
-    "gus": 4000,
-    "maria": 3000
+    "gus": 0,
+    "maria": 0
   },
-  "cardClosingDay": 1,
+  "cardClosingDay": 15,
   "rules": [
     {
-      "id": "lj1s7gx",
+      "id": "cat_moradia",
       "name": "Casa",
-      "color": "#00ff04"
+      "color": "#10b981"
     },
     {
-      "id": "at6gtps",
+      "id": "cat_cartao",
       "name": "Cartão",
-      "color": "#fbff00"
+      "color": "#f59e0b"
     },
     {
-      "id": "aybzvy7",
+      "id": "cat_divida",
       "name": "Dívida",
-      "color": "#ff0000"
+      "color": "#f43f5e"
+    },
+    {
+      "id": "cat_alimentacao",
+      "name": "Alimentação",
+      "color": "#ec4899"
+    },
+    {
+      "id": "cat_transporte",
+      "name": "Transporte",
+      "color": "#38bdf8"
+    },
+    {
+      "id": "cat_lazer",
+      "name": "Lazer",
+      "color": "#a855f7"
+    },
+    {
+      "id": "cat_outros",
+      "name": "Outros",
+      "color": "#9ba1b6"
     }
   ],
   "planBuckets": [
@@ -28,413 +48,41 @@
       "id": "7buv3di",
       "name": "Essenciais",
       "pct": 50,
-      "color": "#6090e0",
+      "color": "#38bdf8",
       "isSpending": true
     },
     {
       "id": "e7cd1q7",
       "name": "Mesada",
       "pct": 20,
-      "color": "#ffffff",
+      "color": "#f0f1f7",
       "isSpending": false
     },
     {
       "id": "9u0bmtj",
       "name": "Investimentos + Reserva",
       "pct": 20,
-      "color": "#00ff1e",
+      "color": "#10b981",
       "isSpending": false
     },
     {
       "id": "teufyrt",
       "name": "Metas de curto/médio prazo",
       "pct": 10,
-      "color": "#ff00bb"
+      "color": "#ec4899",
+      "isSpending": false
     }
   ],
-  "monthActuals": {
-    "2026-06": {
-      "salaryGus": 4738.91,
-      "salaryMaria": 4000,
-      "recurOverrides": {
-        "829a45a": 1599.62,
-        "2hqg864": 66.48,
-        "1pzwjp9": 119.9,
-        "xkjc1ll": 305.59,
-        "5i9ofl2": 122
-      }
-    },
-    "2026-07": {
-      "salaryGus": 3000,
-      "salaryMaria": 4000,
-      "recurOverrides": {
-        "829a45a": 1533.4,
-        "1pzwjp9": 119.9,
-        "2hqg864": 67.93,
-        "xkjc1ll": 227.25
-      }
-    },
-    "2026-09": {
-      "salaryGus": 3000,
-      "salaryMaria": 5918,
-      "recurOverrides": {
-        "1pzwjp9": 119,
-        "xkjc1ll": 250,
-        "2hqg864": 67
-      }
-    },
-    "2026-08": {
-      "recurOverrides": {
-        "1pzwjp9": 119,
-        "2hqg864": 66,
-        "xkjc1ll": 250
-      },
-      "salaryGus": 3000,
-      "salaryMaria": 4000
-    }
-  },
-  "entries": [
-    {
-      "id": "gpn100u",
-      "name": "Mercado Pago",
-      "type": "expense",
-      "category": "Dívida",
-      "owner": "gus",
-      "plan": "7buv3di",
-      "month": "2026-06",
-      "projected": 444.78,
-      "actual": 444.78,
-      "note": ""
-    }
-  ],
-  "recurring": [
-    {
-      "id": "829a45a",
-      "name": "Aluguel/Condomínio",
-      "value": 1600,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "casal",
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "lhkr3b6",
-      "name": "Faculdade",
-      "value": 250,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "gus",
-      "active": false,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "s17krmt",
-      "name": "TV",
-      "value": 50,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "casal",
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "1pzwjp9",
-      "name": "Internet",
-      "value": 105,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "casal",
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "2hqg864",
-      "name": "Gás",
-      "value": 80,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "casal",
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "xkjc1ll",
-      "name": "Luz",
-      "value": 400,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "casal",
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "eepdee9",
-      "name": "Mei",
-      "value": 85.45,
-      "category": "Casa",
-      "type": "expense",
-      "owner": "maria",
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "5i9ofl2",
-      "name": "Tim",
-      "type": "expense",
-      "category": "Casa",
-      "owner": "gus",
-      "value": 125,
-      "active": true,
-      "plan": "7buv3di"
-    },
-    {
-      "id": "976hrlt",
-      "name": "Cartão Inter",
-      "type": "expense",
-      "category": "Dívida",
-      "owner": "maria",
-      "plan": "7buv3di",
-      "value": 385.04,
-      "active": false
-    }
-  ],
-  "cardExpenses": [
-    {
-      "id": "8tsn378",
-      "name": "Mercado pago",
-      "value": 1365.76,
-      "totalParcels": 1,
-      "purchaseDate": "2026-05-20",
-      "category": "Cartão",
-      "owner": "casal",
-      "plan": "7buv3di"
-    },
-    {
-      "id": "0hv7dfs",
-      "name": "Itaú (Gus)",
-      "value": 850.91,
-      "totalParcels": 1,
-      "purchaseDate": "2026-05-20",
-      "category": "Cartão",
-      "owner": "casal",
-      "plan": "7buv3di"
-    },
-    {
-      "id": "ttuy7as",
-      "name": "Itaú (Lenir)",
-      "value": 2574.9,
-      "totalParcels": 1,
-      "purchaseDate": "2026-05-20",
-      "category": "Cartão",
-      "owner": "gus",
-      "plan": "7buv3di"
-    }
-  ],
-  "cards": [
-    {
-      "id": "bxbc0a7",
-      "name": "Itaú (Gus)",
-      "color": "#6090e0",
-      "closingDay": 1,
-      "owner": "casal"
-    },
-    {
-      "id": "9q0i9wu",
-      "name": "Itaú (Lenir)",
-      "color": "#00ff11",
-      "closingDay": 1,
-      "owner": "casal"
-    },
-    {
-      "id": "9che2rf",
-      "name": "Mercado Pago",
-      "color": "#eeff00",
-      "closingDay": 1,
-      "owner": "casal"
-    },
-    {
-      "id": "6oq7j79",
-      "name": "PicPay",
-      "color": "#00b054",
-      "closingDay": 2,
-      "owner": "maria"
-    },
-    {
-      "id": "qqsr3a8",
-      "name": "Cartão Bradesco",
-      "color": "#ed2000",
-      "closingDay": 10,
-      "owner": "maria"
-    }
-  ],
-  "cardInvoices": [
-    {
-      "id": "uolkla5",
-      "cardId": "bxbc0a7",
-      "month": "2026-06",
-      "value": 4791.57,
-      "note": "Migrado de compras parceladas"
-    },
-    {
-      "id": "zgxz5k7",
-      "cardId": "9che2rf",
-      "month": "2026-07",
-      "value": 1532.41,
-      "note": ""
-    },
-    {
-      "id": "o30oyhk",
-      "cardId": "9che2rf",
-      "month": "2026-08",
-      "value": 33.21,
-      "note": ""
-    },
-    {
-      "id": "fo2bnps",
-      "cardId": "9che2rf",
-      "month": "2026-09",
-      "value": 550.13,
-      "note": ""
-    },
-    {
-      "id": "1fsjv1c",
-      "cardId": "9che2rf",
-      "month": "2026-10",
-      "value": 33.21,
-      "note": ""
-    },
-    {
-      "id": "7wyaefh",
-      "cardId": "9che2rf",
-      "month": "2026-11",
-      "value": 33.21,
-      "note": ""
-    },
-    {
-      "id": "0wrennt",
-      "cardId": "bxbc0a7",
-      "month": "2026-07",
-      "value": 2322.88,
-      "note": ""
-    },
-    {
-      "id": "6tuaa35",
-      "cardId": "9q0i9wu",
-      "month": "2026-07",
-      "value": 950.65,
-      "note": ""
-    },
-    {
-      "id": "em0adb9",
-      "cardId": "9q0i9wu",
-      "month": "2026-08",
-      "value": 175.84,
-      "note": ""
-    },
-    {
-      "id": "ua5vduj",
-      "cardId": "9q0i9wu",
-      "month": "2026-09",
-      "value": 2736.45,
-      "note": ""
-    },
-    {
-      "id": "0u0ic2f",
-      "cardId": "6oq7j79",
-      "month": "2026-07",
-      "value": 373.4,
-      "note": ""
-    },
-    {
-      "id": "nzmxkla",
-      "cardId": "6oq7j79",
-      "month": "2026-08",
-      "value": 430.5,
-      "note": ""
-    },
-    {
-      "id": "rxxyjn9",
-      "cardId": "qqsr3a8",
-      "month": "2026-08",
-      "value": 0,
-      "note": ""
-    },
-    {
-      "id": "we7jixw",
-      "cardId": "qqsr3a8",
-      "month": "2026-09",
-      "value": 2875.76,
-      "note": ""
-    },
-    {
-      "id": "ap3m8c4",
-      "cardId": "qqsr3a8",
-      "month": "2026-10",
-      "value": 435.48,
-      "note": ""
-    },
-    {
-      "id": "9sjb9ld",
-      "cardId": "bxbc0a7",
-      "month": "2026-09",
-      "value": 421.22,
-      "note": ""
-    }
-  ],
+  "monthActuals": {},
+  "entries": [],
+  "recurring": [],
+  "cardExpenses": [],
+  "cards": [],
+  "cardInvoices": [],
   "goals": [],
-  "cofrinhos": [
-    {
-      "id": "szotper",
-      "name": "Bicicleta elétrica",
-      "total": 118,
-      "marked": {},
-      "deposits": []
-    },
-    {
-      "id": "m82bppz",
-      "name": "Viagem Itália",
-      "total": 246,
-      "marked": {
-        "10": true
-      },
-      "deposits": [
-        {
-          "num": 10,
-          "date": "2026-05-30"
-        }
-      ]
-    }
-  ],
-  "tasks": [
-    {
-      "id": "arl2wwb",
-      "name": "Limpar caixa de areia",
-      "freq": "weekly",
-      "owner": "gus",
-      "time": "07:00",
-      "note": "",
-      "startDate": "2026-06-02",
-      "days": [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
-    }
-  ],
-  "taskChecks": {
-    "2026-06-01_neecp8o": true,
-    "2026-05-29_neecp8o": true,
-    "2026-06-02_neecp8o": false,
-    "2026-05-28_neecp8o": true,
-    "2026-05-27_neecp8o": true,
-    "2026-06-02_arl2wwb": true,
-    "2026-06-01_arl2wwb": true,
-    "2026-05-29_arl2wwb": true,
-    "2026-05-28_arl2wwb": true
-  },
+  "cofrinhos": [],
+  "tasks": [],
+  "taskChecks": {},
   "study": {
     "gus": {
       "sessions": []
@@ -443,5 +91,6 @@
       "sessions": []
     }
   },
+  "trips": [],
   "_cardModelMigrated": true
 }

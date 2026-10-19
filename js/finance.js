@@ -103,6 +103,8 @@ function getMonthFinancials(ym) {
   const fairShareMaria = totalShared * propMaria;
 
   return {
+    isCustomGus: actual.salaryGus !== undefined,
+    isCustomMaria: actual.salaryMaria !== undefined,
     salaryGus,
     salaryMaria,
     totalIncome,
@@ -180,27 +182,27 @@ function renderFinDashboard(container, fin) {
       </div>
 
       <!-- Receitas Gus & Maria -->
-      <div class="surface-card p-5">
+      <div class="surface-card p-5 cursor-pointer hover:border-amber-500/40 transition" onclick="openSalaryModal()">
         <div class="flex items-center justify-between mb-2">
           <span class="text-xs font-mono uppercase text-slate-400">Renda ${state.name1}</span>
           <span class="badge badge-gus">${(fin.propGus * 100).toFixed(0)}%</span>
         </div>
         <div class="text-xl font-bold text-sky-400">${fmtMoney(fin.salaryGus)}</div>
         <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-          <span>Base cadastrada:</span>
-          <button class="text-amber-400 hover:underline" onclick="openSalaryModal()">Editar Renda</button>
+          <span>${fin.isCustomGus ? '<span class="text-amber-300 font-semibold">● Ajuste neste mês</span>' : '● Salário padrão'}</span>
+          <span class="text-amber-400 hover:underline flex items-center gap-1 font-medium"><i data-lucide="edit-3" class="w-3 h-3"></i> Editar</span>
         </div>
       </div>
 
-      <div class="surface-card p-5">
+      <div class="surface-card p-5 cursor-pointer hover:border-amber-500/40 transition" onclick="openSalaryModal()">
         <div class="flex items-center justify-between mb-2">
           <span class="text-xs font-mono uppercase text-slate-400">Renda ${state.name2}</span>
           <span class="badge badge-maria">${(fin.propMaria * 100).toFixed(0)}%</span>
         </div>
         <div class="text-xl font-bold text-pink-400">${fmtMoney(fin.salaryMaria)}</div>
         <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-          <span>Base cadastrada:</span>
-          <button class="text-amber-400 hover:underline" onclick="openSalaryModal()">Editar Renda</button>
+          <span>${fin.isCustomMaria ? '<span class="text-amber-300 font-semibold">● Ajuste neste mês</span>' : '● Salário padrão'}</span>
+          <span class="text-amber-400 hover:underline flex items-center gap-1 font-medium"><i data-lucide="edit-3" class="w-3 h-3"></i> Editar</span>
         </div>
       </div>
     </div>
@@ -672,23 +674,91 @@ function filterFinOwner(owner) {
 
 // Modais e Lógica de Cadastro
 function openSalaryModal() {
+  const modal = document.getElementById('modalSalaries');
+  if (!modal) return;
+
   const actual = (state.monthActuals && state.monthActuals[currentMonth]) || {};
-  const gus = actual.salaryGus !== undefined ? actual.salaryGus : (state.salaries?.gus || 0);
-  const maria = actual.salaryMaria !== undefined ? actual.salaryMaria : (state.salaries?.maria || 0);
+  const gusMonth = actual.salaryGus !== undefined ? actual.salaryGus : (state.salaries?.gus || 0);
+  const mariaMonth = actual.salaryMaria !== undefined ? actual.salaryMaria : (state.salaries?.maria || 0);
 
-  const valGus = prompt(`Renda de ${state.name1} para ${currentMonth}:`, gus);
-  if (valGus === null) return;
-  const valMaria = prompt(`Renda de ${state.name2} para ${currentMonth}:`, maria);
-  if (valMaria === null) return;
+  const [y, m] = currentMonth.split('-');
+  const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const monthName = `${months[parseInt(m, 10) - 1]} ${y}`;
 
+  // Título e Labels
+  const titleEl = document.getElementById('salMonthTitle');
+  if (titleEl) titleEl.textContent = monthName;
+
+  const lblMonthGus = document.getElementById('lblMonthSalGus');
+  if (lblMonthGus) lblMonthGus.textContent = `${state.name1} neste mês (R$)`;
+  const lblMonthMaria = document.getElementById('lblMonthSalMaria');
+  if (lblMonthMaria) lblMonthMaria.textContent = `${state.name2} neste mês (R$)`;
+
+  const lblDefGus = document.getElementById('lblDefSalGus');
+  if (lblDefGus) lblDefGus.textContent = `Padrão ${state.name1} (R$)`;
+  const lblDefMaria = document.getElementById('lblDefSalMaria');
+  if (lblDefMaria) lblDefMaria.textContent = `Padrão ${state.name2} (R$)`;
+
+  // Preenche inputs
+  const inputMonthGus = document.getElementById('inputMonthSalGus');
+  if (inputMonthGus) inputMonthGus.value = gusMonth || '';
+  const inputMonthMaria = document.getElementById('inputMonthSalMaria');
+  if (inputMonthMaria) inputMonthMaria.value = mariaMonth || '';
+
+  const inputDefGus = document.getElementById('inputDefSalGus');
+  if (inputDefGus) inputDefGus.value = state.salaries?.gus || '';
+  const inputDefMaria = document.getElementById('inputDefSalMaria');
+  if (inputDefMaria) inputDefMaria.value = state.salaries?.maria || '';
+
+  modal.classList.add('active');
+  if (window.lucide) lucide.createIcons();
+}
+
+function saveSalariesSubmit(e) {
+  if (e) e.preventDefault();
+
+  const defGus = parseFloat(document.getElementById('inputDefSalGus')?.value) || 0;
+  const defMaria = parseFloat(document.getElementById('inputDefSalMaria')?.value) || 0;
+
+  const monthGus = parseFloat(document.getElementById('inputMonthSalGus')?.value);
+  const monthMaria = parseFloat(document.getElementById('inputMonthSalMaria')?.value);
+
+  // 1. Atualiza salários padrão fixos
+  if (!state.salaries) state.salaries = {};
+  state.salaries.gus = defGus;
+  state.salaries.maria = defMaria;
+
+  // 2. Atualiza salários do mês específico
   if (!state.monthActuals) state.monthActuals = {};
   if (!state.monthActuals[currentMonth]) state.monthActuals[currentMonth] = {};
 
-  state.monthActuals[currentMonth].salaryGus = parseFloat(valGus) || 0;
-  state.monthActuals[currentMonth].salaryMaria = parseFloat(valMaria) || 0;
+  if (!isNaN(monthGus)) {
+    state.monthActuals[currentMonth].salaryGus = monthGus;
+  }
+  if (!isNaN(monthMaria)) {
+    state.monthActuals[currentMonth].salaryMaria = monthMaria;
+  }
 
   saveState();
-  showToast('Renda do mês atualizada!', 'success');
+  closeModal('modalSalaries');
+  showToast('Salários atualizados com sucesso! 💰', 'success');
+  renderFinanceView();
+}
+
+function resetMonthSalariesToDefault() {
+  if (!state.monthActuals || !state.monthActuals[currentMonth]) return;
+
+  delete state.monthActuals[currentMonth].salaryGus;
+  delete state.monthActuals[currentMonth].salaryMaria;
+
+  // Atualiza campos da tela com os padrões
+  const inputMonthGus = document.getElementById('inputMonthSalGus');
+  if (inputMonthGus) inputMonthGus.value = state.salaries?.gus || '';
+  const inputMonthMaria = document.getElementById('inputMonthSalMaria');
+  if (inputMonthMaria) inputMonthMaria.value = state.salaries?.maria || '';
+
+  saveState();
+  showToast('Salário deste mês restaurado para o padrão!', 'info');
   renderFinanceView();
 }
 

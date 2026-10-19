@@ -10,7 +10,7 @@ function defaultState() {
   return {
     name1: 'Gus',
     name2: 'Maria',
-    salaries: { gus: 4000, maria: 3000 },
+    salaries: { gus: 0, maria: 0 },
     cardClosingDay: 1,
     rules: [
       { id: 'cat_moradia',     name: 'Casa',        color: '#10b981' },
