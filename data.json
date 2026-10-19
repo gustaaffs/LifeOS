@@ -480,6 +480,42 @@
           "payer": "casal",
           "date": "2026-10-19",
           "notes": ""
+        },
+        {
+          "id": "ju5ds6brz0",
+          "description": "óculos, Capinha e lembrancinhas",
+          "amount": 123,
+          "category": "compras",
+          "payer": "casal",
+          "date": "2026-10-18",
+          "notes": ""
+        },
+        {
+          "id": "9331u4249l",
+          "description": "Passeio de barco (comidas)",
+          "amount": 173.8,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-18",
+          "notes": ""
+        },
+        {
+          "id": "qhj6fl4ve1",
+          "description": "Snorkel e Entrada do passeio",
+          "amount": 170,
+          "category": "passeio",
+          "payer": "casal",
+          "date": "2026-10-18",
+          "notes": ""
+        },
+        {
+          "id": "jpyo1hnzo7",
+          "description": "Estacionamento",
+          "amount": 60,
+          "category": "passeio",
+          "payer": "casal",
+          "date": "2026-10-18",
+          "notes": ""
         }
       ]
     }
