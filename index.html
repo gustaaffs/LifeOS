@@ -91,9 +91,14 @@
             <span id="syncText">Pronto</span>
           </div>
         </div>
-        <button class="btn btn-secondary btn-sm w-full text-xs font-medium" onclick="pushToGitHub()">
-          <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-amber-400"></i> Sincronizar GitHub
-        </button>
+        <div class="grid grid-cols-2 gap-2">
+          <button class="btn btn-secondary btn-sm text-xs font-medium" onclick="pullFromGitHub()" title="Puxar dados atualizados do GitHub">
+            <i data-lucide="download-cloud" class="w-3.5 h-3.5 text-sky-400"></i> Puxar
+          </button>
+          <button class="btn btn-secondary btn-sm text-xs font-medium" onclick="pushToGitHub()" title="Enviar alterações locais para o GitHub">
+            <i data-lucide="upload-cloud" class="w-3.5 h-3.5 text-amber-400"></i> Enviar
+          </button>
+        </div>
       </div>
     </aside>
 
@@ -119,10 +124,17 @@
             </button>
           </div>
 
-          <!-- Botão Sincronizar Rápido -->
-          <button id="syncBtnMobile" class="btn btn-secondary btn-icon w-9 h-9" onclick="pushToGitHub()" title="Sincronizar com GitHub">
-            <i data-lucide="refresh-cw" class="w-4 h-4 text-amber-400"></i>
-          </button>
+          <!-- Botões de Sincronização (Puxar e Enviar) -->
+          <div class="flex items-center gap-1.5">
+            <button class="btn btn-secondary btn-sm text-xs py-1.5 px-2.5 flex items-center gap-1.5" onclick="pullFromGitHub()" title="Puxar dados do GitHub">
+              <i data-lucide="download-cloud" class="w-3.5 h-3.5 text-sky-400"></i>
+              <span class="hidden sm:inline">Puxar</span>
+            </button>
+            <button id="syncBtnMobile" class="btn btn-secondary btn-sm text-xs py-1.5 px-2.5 flex items-center gap-1.5" onclick="pushToGitHub()" title="Enviar alterações para o GitHub">
+              <i data-lucide="upload-cloud" class="w-3.5 h-3.5 text-amber-400"></i>
+              <span class="hidden sm:inline">Enviar</span>
+            </button>
+          </div>
         </div>
       </header>
 
