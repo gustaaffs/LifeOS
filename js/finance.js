@@ -182,27 +182,51 @@ function renderFinDashboard(container, fin) {
       </div>
 
       <!-- Receitas Gus & Maria -->
-      <div class="surface-card p-5 cursor-pointer hover:border-amber-500/40 transition" onclick="openSalaryModal()">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-mono uppercase text-slate-400">Renda ${state.name1}</span>
-          <span class="badge badge-gus">${(fin.propGus * 100).toFixed(0)}%</span>
+      <div class="surface-card p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono uppercase text-slate-400">Renda ${state.name1}</span>
+            <span class="badge badge-gus">${(fin.propGus * 100).toFixed(0)}%</span>
+          </div>
+          <div class="text-xl font-bold text-sky-400 font-mono">${fmtMoney(fin.salaryGus)}</div>
+          <div class="text-xs text-slate-400 mt-1">
+            ${fin.isCustomGus 
+              ? `<span class="text-amber-300 font-semibold flex items-center gap-1">● Ajuste neste mês <span class="text-slate-500 font-normal">(Padrão: ${fmtMoney(state.salaries?.gus)})</span></span>` 
+              : `<span class="text-slate-400 flex items-center gap-1">● Salário Global (Padrão)</span>`}
+          </div>
         </div>
-        <div class="text-xl font-bold text-sky-400">${fmtMoney(fin.salaryGus)}</div>
-        <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-          <span>${fin.isCustomGus ? '<span class="text-amber-300 font-semibold">● Ajuste neste mês</span>' : '● Salário padrão'}</span>
-          <span class="text-amber-400 hover:underline flex items-center gap-1 font-medium"><i data-lucide="edit-3" class="w-3 h-3"></i> Editar</span>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2">
+          <button class="btn btn-secondary btn-sm flex-1 text-[11px] py-1 px-2" onclick="openSalaryModal('month')" title="Ajustar apenas para este mês">
+            <i data-lucide="calendar" class="w-3 h-3 text-amber-400"></i> Este Mês
+          </button>
+          <button class="btn btn-ghost btn-sm flex-1 text-[11px] py-1 px-2 text-slate-300 hover:text-white" onclick="openSalaryModal('global')" title="Editar salário base global que vale para todo mês">
+            <i data-lucide="globe" class="w-3 h-3 text-sky-400"></i> Todo Mês
+          </button>
         </div>
       </div>
 
-      <div class="surface-card p-5 cursor-pointer hover:border-amber-500/40 transition" onclick="openSalaryModal()">
-        <div class="flex items-center justify-between mb-2">
-          <span class="text-xs font-mono uppercase text-slate-400">Renda ${state.name2}</span>
-          <span class="badge badge-maria">${(fin.propMaria * 100).toFixed(0)}%</span>
+      <div class="surface-card p-5 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono uppercase text-slate-400">Renda ${state.name2}</span>
+            <span class="badge badge-maria">${(fin.propMaria * 100).toFixed(0)}%</span>
+          </div>
+          <div class="text-xl font-bold text-pink-400 font-mono">${fmtMoney(fin.salaryMaria)}</div>
+          <div class="text-xs text-slate-400 mt-1">
+            ${fin.isCustomMaria 
+              ? `<span class="text-amber-300 font-semibold flex items-center gap-1">● Ajuste neste mês <span class="text-slate-500 font-normal">(Padrão: ${fmtMoney(state.salaries?.maria)})</span></span>` 
+              : `<span class="text-slate-400 flex items-center gap-1">● Salário Global (Padrão)</span>`}
+          </div>
         </div>
-        <div class="text-xl font-bold text-pink-400">${fmtMoney(fin.salaryMaria)}</div>
-        <div class="mt-3 flex items-center justify-between text-xs text-slate-400">
-          <span>${fin.isCustomMaria ? '<span class="text-amber-300 font-semibold">● Ajuste neste mês</span>' : '● Salário padrão'}</span>
-          <span class="text-amber-400 hover:underline flex items-center gap-1 font-medium"><i data-lucide="edit-3" class="w-3 h-3"></i> Editar</span>
+
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2">
+          <button class="btn btn-secondary btn-sm flex-1 text-[11px] py-1 px-2" onclick="openSalaryModal('month')" title="Ajustar apenas para este mês">
+            <i data-lucide="calendar" class="w-3 h-3 text-amber-400"></i> Este Mês
+          </button>
+          <button class="btn btn-ghost btn-sm flex-1 text-[11px] py-1 px-2 text-slate-300 hover:text-white" onclick="openSalaryModal('global')" title="Editar salário base global que vale para todo mês">
+            <i data-lucide="globe" class="w-3 h-3 text-sky-400"></i> Todo Mês
+          </button>
         </div>
       </div>
     </div>
@@ -673,7 +697,32 @@ function filterFinOwner(owner) {
 }
 
 // Modais e Lógica de Cadastro
-function openSalaryModal() {
+// Modais e Lógica de Gestão de Salários (Global vs Mensal)
+let currentSalScopeTab = 'global';
+
+function switchSalModalTab(scope) {
+  currentSalScopeTab = scope;
+  const btnGlobal = document.getElementById('btnSalScopeGlobal');
+  const btnMonth = document.getElementById('btnSalScopeMonth');
+  const viewGlobal = document.getElementById('salViewGlobal');
+  const viewMonth = document.getElementById('salViewMonth');
+
+  if (scope === 'global') {
+    if (btnGlobal) btnGlobal.className = 'py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-sky-500/20 text-sky-300 font-bold border border-sky-500/30';
+    if (btnMonth) btnMonth.className = 'py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition text-slate-400 hover:text-white';
+    if (viewGlobal) viewGlobal.classList.remove('hidden');
+    if (viewMonth) viewMonth.classList.add('hidden');
+  } else {
+    if (btnGlobal) btnGlobal.className = 'py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition text-slate-400 hover:text-white';
+    if (btnMonth) btnMonth.className = 'py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition bg-amber-500/20 text-amber-300 font-bold border border-amber-500/30';
+    if (viewGlobal) viewGlobal.classList.add('hidden');
+    if (viewMonth) viewMonth.classList.remove('hidden');
+  }
+
+  if (window.lucide) lucide.createIcons();
+}
+
+function openSalaryModal(targetScope = 'global') {
   const modal = document.getElementById('modalSalaries');
   if (!modal) return;
 
@@ -690,14 +739,14 @@ function openSalaryModal() {
   if (titleEl) titleEl.textContent = monthName;
 
   const lblMonthGus = document.getElementById('lblMonthSalGus');
-  if (lblMonthGus) lblMonthGus.textContent = `${state.name1} neste mês (R$)`;
+  if (lblMonthGus) lblMonthGus.textContent = `Renda ${state.name1} em ${monthName} (R$)`;
   const lblMonthMaria = document.getElementById('lblMonthSalMaria');
-  if (lblMonthMaria) lblMonthMaria.textContent = `${state.name2} neste mês (R$)`;
+  if (lblMonthMaria) lblMonthMaria.textContent = `Renda ${state.name2} em ${monthName} (R$)`;
 
   const lblDefGus = document.getElementById('lblDefSalGus');
-  if (lblDefGus) lblDefGus.textContent = `Padrão ${state.name1} (R$)`;
+  if (lblDefGus) lblDefGus.textContent = `Salário Padrão ${state.name1} (R$)`;
   const lblDefMaria = document.getElementById('lblDefSalMaria');
-  if (lblDefMaria) lblDefMaria.textContent = `Padrão ${state.name2} (R$)`;
+  if (lblDefMaria) lblDefMaria.textContent = `Salário Padrão ${state.name2} (R$)`;
 
   // Preenche inputs
   const inputMonthGus = document.getElementById('inputMonthSalGus');
@@ -710,25 +759,28 @@ function openSalaryModal() {
   const inputDefMaria = document.getElementById('inputDefSalMaria');
   if (inputDefMaria) inputDefMaria.value = state.salaries?.maria || '';
 
+  switchSalModalTab(targetScope);
   modal.classList.add('active');
-  if (window.lucide) lucide.createIcons();
 }
 
-function saveSalariesSubmit(e) {
-  if (e) e.preventDefault();
-
+function saveGlobalSalary() {
   const defGus = parseFloat(document.getElementById('inputDefSalGus')?.value) || 0;
   const defMaria = parseFloat(document.getElementById('inputDefSalMaria')?.value) || 0;
 
-  const monthGus = parseFloat(document.getElementById('inputMonthSalGus')?.value);
-  const monthMaria = parseFloat(document.getElementById('inputMonthSalMaria')?.value);
-
-  // 1. Atualiza salários padrão fixos
   if (!state.salaries) state.salaries = {};
   state.salaries.gus = defGus;
   state.salaries.maria = defMaria;
 
-  // 2. Atualiza salários do mês específico
+  saveState();
+  closeModal('modalSalaries');
+  showToast('Salário Global salvo para todos os meses! 🌐', 'success');
+  renderFinanceView();
+}
+
+function saveMonthSalary() {
+  const monthGus = parseFloat(document.getElementById('inputMonthSalGus')?.value);
+  const monthMaria = parseFloat(document.getElementById('inputMonthSalMaria')?.value);
+
   if (!state.monthActuals) state.monthActuals = {};
   if (!state.monthActuals[currentMonth]) state.monthActuals[currentMonth] = {};
 
@@ -739,26 +791,25 @@ function saveSalariesSubmit(e) {
     state.monthActuals[currentMonth].salaryMaria = monthMaria;
   }
 
+  const [y, m] = currentMonth.split('-');
+  const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+  const monthName = `${months[parseInt(m, 10) - 1]} ${y}`;
+
   saveState();
   closeModal('modalSalaries');
-  showToast('Salários atualizados com sucesso! 💰', 'success');
+  showToast(`Renda ajustada apenas para ${monthName}! 📅`, 'success');
   renderFinanceView();
 }
 
 function resetMonthSalariesToDefault() {
-  if (!state.monthActuals || !state.monthActuals[currentMonth]) return;
-
-  delete state.monthActuals[currentMonth].salaryGus;
-  delete state.monthActuals[currentMonth].salaryMaria;
-
-  // Atualiza campos da tela com os padrões
-  const inputMonthGus = document.getElementById('inputMonthSalGus');
-  if (inputMonthGus) inputMonthGus.value = state.salaries?.gus || '';
-  const inputMonthMaria = document.getElementById('inputMonthSalMaria');
-  if (inputMonthMaria) inputMonthMaria.value = state.salaries?.maria || '';
+  if (state.monthActuals && state.monthActuals[currentMonth]) {
+    delete state.monthActuals[currentMonth].salaryGus;
+    delete state.monthActuals[currentMonth].salaryMaria;
+  }
 
   saveState();
-  showToast('Salário deste mês restaurado para o padrão!', 'info');
+  closeModal('modalSalaries');
+  showToast('Ajuste do mês removido! Agora usando o Salário Global padrão. ✨', 'info');
   renderFinanceView();
 }
 

@@ -306,7 +306,7 @@
     </div>
   </div>
 
-  <!-- Modal: Editar Salários (Padrão e Mensal) -->
+  <!-- Modal: Editar Salários (Padrão Global vs Mensal) -->
   <div class="modal-backdrop" id="modalSalaries">
     <div class="modal-card">
       <div class="modal-header">
@@ -315,60 +315,77 @@
         </h3>
         <button class="btn btn-ghost btn-sm" onclick="closeModal('modalSalaries')"><i data-lucide="x" class="w-4 h-4"></i></button>
       </div>
-      <form id="salariesForm" onsubmit="saveSalariesSubmit(event)">
-        <div class="modal-body space-y-6">
-          
-          <!-- Seção 1: Salário Específico do Mês Atual -->
-          <div class="p-4 rounded-xl bg-slate-900/80 border border-amber-500/30">
-            <div class="flex items-center justify-between mb-2">
-              <span class="text-xs font-mono font-bold uppercase text-amber-300 flex items-center gap-1.5">
-                <i data-lucide="calendar" class="w-3.5 h-3.5"></i> Renda Específica deste Mês (<span id="salMonthTitle"></span>)
-              </span>
+
+      <!-- Seletor de Escopo: Global vs Mensal -->
+      <div class="p-4 pb-0">
+        <div class="grid grid-cols-2 gap-2 p-1 bg-slate-900 border border-slate-800 rounded-xl">
+          <button type="button" id="btnSalScopeGlobal" class="py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition text-slate-400" onclick="switchSalModalTab('global')">
+            <i data-lucide="globe" class="w-3.5 h-3.5"></i> 1. Salário Global (Todo Mês)
+          </button>
+          <button type="button" id="btnSalScopeMonth" class="py-2 px-3 rounded-lg text-xs font-semibold flex items-center justify-center gap-1.5 transition text-slate-400" onclick="switchSalModalTab('month')">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i> 2. Apenas neste Mês
+          </button>
+        </div>
+      </div>
+
+      <div class="modal-body space-y-4">
+        <!-- ABA 1: SALÁRIO GLOBAL (Salva para todo mês) -->
+        <div id="salViewGlobal" class="space-y-4">
+          <div class="p-3.5 rounded-xl bg-sky-500/10 border border-sky-500/20 text-xs text-sky-300 leading-relaxed">
+            <i data-lucide="info" class="w-3.5 h-3.5 inline mr-1 text-sky-400"></i>
+            O <strong>Salário Global</strong> é a renda fixa que se repete automaticamente em todos os meses. Altere aqui quando houver aumento salarial permanente ou reajuste.
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="form-label" id="lblDefSalGus">Salário Padrão Gus (R$)</label>
+              <input type="number" step="0.01" id="inputDefSalGus" placeholder="0.00" class="form-control text-sm font-mono">
             </div>
-            <p class="text-[11px] text-slate-400 mb-3">
-              Altere aqui se neste mês houve horas extras, comissões, bônus, férias ou descontos.
-            </p>
-            <div class="grid grid-cols-2 gap-3 mb-3">
-              <div>
-                <label class="form-label" id="lblMonthSalGus">Gus (R$)</label>
-                <input type="number" step="0.01" id="inputMonthSalGus" placeholder="0.00" class="form-control text-sm">
-              </div>
-              <div>
-                <label class="form-label" id="lblMonthSalMaria">Maria (R$)</label>
-                <input type="number" step="0.01" id="inputMonthSalMaria" placeholder="0.00" class="form-control text-sm">
-              </div>
+            <div>
+              <label class="form-label" id="lblDefSalMaria">Salário Padrão Maria (R$)</label>
+              <input type="number" step="0.01" id="inputDefSalMaria" placeholder="0.00" class="form-control text-sm font-mono">
             </div>
-            <button type="button" class="text-[11px] text-slate-400 hover:text-amber-300 underline" onclick="resetMonthSalariesToDefault()">
-              Restaurar para salário padrão neste mês
+          </div>
+
+          <div class="pt-2">
+            <button type="button" class="btn btn-primary btn-sm w-full" onclick="saveGlobalSalary()">
+              <i data-lucide="check" class="w-4 h-4"></i> Salvar Salário Global (Para Todo Mês)
             </button>
           </div>
+        </div>
 
-          <!-- Seção 2: Salário Base Padrão -->
-          <div class="p-4 rounded-xl bg-slate-900/50 border border-slate-800">
-            <span class="text-xs font-mono font-bold uppercase text-slate-300 flex items-center gap-1.5 mb-1">
-              <i data-lucide="shield" class="w-3.5 h-3.5 text-sky-400"></i> Salário Base Padrão (Fixo)
-            </span>
-            <p class="text-[11px] text-slate-400 mb-3">
-              Valor fixo habitual aplicado automaticamente a todos os meses quando não houver ajuste.
-            </p>
-            <div class="grid grid-cols-2 gap-3">
-              <div>
-                <label class="form-label" id="lblDefSalGus">Padrão Gus (R$)</label>
-                <input type="number" step="0.01" id="inputDefSalGus" placeholder="0.00" class="form-control text-sm">
-              </div>
-              <div>
-                <label class="form-label" id="lblDefSalMaria">Padrão Maria (R$)</label>
-                <input type="number" step="0.01" id="inputDefSalMaria" placeholder="0.00" class="form-control text-sm">
-              </div>
+        <!-- ABA 2: SALÁRIO APENAS DESTE MÊS (Exceção) -->
+        <div id="salViewMonth" class="space-y-4 hidden">
+          <div class="p-3.5 rounded-xl bg-amber-500/10 border border-amber-500/20 text-xs text-amber-300 leading-relaxed">
+            <i data-lucide="calendar-check" class="w-3.5 h-3.5 inline mr-1 text-amber-400"></i>
+            Ajuste para <strong id="salMonthTitle"></strong>: altere se neste mês específico você recebeu horas extras, comissões, bônus, 13º, férias ou descontos.
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label class="form-label" id="lblMonthSalGus">Renda Gus neste mês (R$)</label>
+              <input type="number" step="0.01" id="inputMonthSalGus" placeholder="0.00" class="form-control text-sm font-mono">
+            </div>
+            <div>
+              <label class="form-label" id="lblMonthSalMaria">Renda Maria neste mês (R$)</label>
+              <input type="number" step="0.01" id="inputMonthSalMaria" placeholder="0.00" class="form-control text-sm font-mono">
             </div>
           </div>
 
+          <div class="space-y-2 pt-2">
+            <button type="button" class="btn btn-primary btn-sm w-full" onclick="saveMonthSalary()">
+              <i data-lucide="check" class="w-4 h-4"></i> Salvar Apenas para este Mês
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm w-full text-xs text-slate-300 hover:text-white" onclick="resetMonthSalariesToDefault()">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 text-amber-400"></i> Limpar Ajuste e Usar Salário Global
+            </button>
+          </div>
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('modalSalaries')">Cancelar</button>
-          <button type="submit" class="btn btn-primary btn-sm">Salvar Salários</button>
-        </div>
-      </form>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-ghost btn-sm" onclick="closeModal('modalSalaries')">Fechar</button>
+      </div>
     </div>
   </div>
 
