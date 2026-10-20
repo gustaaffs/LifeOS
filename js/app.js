@@ -116,7 +116,7 @@ function renderConfigView() {
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
               <label class="form-label">Repositório (owner/repo)</label>
-              <input type="text" id="cfgRepo" value="${cfg.repo || 'gustaaffs/studyos'}" class="form-control text-xs">
+              <input type="text" id="cfgRepo" value="${cfg.repo || 'gustaaffs/LifeOS'}" class="form-control text-xs">
             </div>
             <div>
               <label class="form-label">Branch</label>

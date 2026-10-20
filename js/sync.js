@@ -8,7 +8,7 @@ function getGHConfig() {
     if (raw) return JSON.parse(raw);
   } catch (e) {}
   return {
-    repo: 'gustaaffs/studyos',
+    repo: 'gustaaffs/LifeOS',
     branch: 'main',
     file: 'data.json'
   };
