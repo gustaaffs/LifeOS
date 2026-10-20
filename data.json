@@ -516,6 +516,24 @@
           "payer": "casal",
           "date": "2026-10-18",
           "notes": ""
+        },
+        {
+          "id": "rd9s6pzw14",
+          "description": "Sorvete",
+          "amount": 55.3,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-19",
+          "notes": ""
+        },
+        {
+          "id": "xpk60lvs2i",
+          "description": "Gasolina",
+          "amount": 165.35,
+          "category": "combustivel",
+          "payer": "casal",
+          "date": "2026-10-19",
+          "notes": ""
         }
       ]
     }
