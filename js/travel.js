@@ -4,6 +4,7 @@
 
 let activeTripId = null;
 let travelCategoryChart = null;
+let travelDailyBarChart = null;
 let travelFilterCategory = 'all';
 let travelFilterPayer = 'all';
 
@@ -204,6 +205,25 @@ function renderTravelView() {
       </div>
     </div>
 
+    <!-- Gráfico de Gastos por Dia da Viagem -->
+    <div class="surface-card p-6 mb-8">
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4">
+        <div>
+          <h4 class="text-sm font-semibold uppercase tracking-wider text-slate-400 flex items-center gap-2">
+            <i data-lucide="bar-chart-2" class="w-4 h-4 text-sky-400"></i> Gastos por Dia da Viagem
+          </h4>
+          <p class="text-xs text-slate-500 mt-0.5">Distribuição diária dos gastos e média por dia da viagem.</p>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap">
+          <span class="badge badge-green text-xs" id="travelDailyAverageBadge">Média: R$ 0,00/dia</span>
+          <span class="badge badge-gus text-xs" id="travelDailyPeakBadge">Pico: R$ 0,00</span>
+        </div>
+      </div>
+      <div class="h-60 relative w-full">
+        <canvas id="travelDailyBarCanvas"></canvas>
+      </div>
+    </div>
+
     <!-- Tabela / Lista de Gastos da Viagem -->
     <div class="surface-card p-6">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-5">
@@ -288,6 +308,7 @@ function renderTravelView() {
 
   if (window.lucide) lucide.createIcons();
   renderTravelDonutChart(catTotals);
+  renderTravelDailyChart(expenses, trip);
 }
 
 function renderTravelDonutChart(catTotals) {
@@ -352,6 +373,118 @@ function renderTravelDonutChart(catTotals) {
         }
       },
       cutout: '72%'
+    }
+  });
+}
+
+function renderTravelDailyChart(expenses, trip) {
+  const canvas = document.getElementById('travelDailyBarCanvas');
+  if (!canvas || !window.Chart) return;
+
+  if (travelDailyBarChart) {
+    travelDailyBarChart.destroy();
+    travelDailyBarChart = null;
+  }
+
+  // Agrupa os gastos por data
+  const dailyTotals = {};
+  (expenses || []).forEach(e => {
+    const d = e.date || 'Sem data';
+    dailyTotals[d] = (dailyTotals[d] || 0) + (Number(e.amount) || 0);
+  });
+
+  const sortedDates = Object.keys(dailyTotals).sort();
+  const daysCount = sortedDates.length;
+  const totalSpent = Object.values(dailyTotals).reduce((a, b) => a + b, 0);
+  const dailyAvg = daysCount > 0 ? (totalSpent / daysCount) : 0;
+
+  let peakVal = 0;
+  let peakDate = '';
+  sortedDates.forEach(d => {
+    if (dailyTotals[d] > peakVal) {
+      peakVal = dailyTotals[d];
+      peakDate = d;
+    }
+  });
+
+  const avgBadge = document.getElementById('travelDailyAverageBadge');
+  if (avgBadge) {
+    avgBadge.textContent = daysCount > 0 ? `Média: ${fmtMoney(dailyAvg)}/dia (${daysCount} ${daysCount === 1 ? 'dia' : 'dias'})` : 'Média: R$ 0,00/dia';
+  }
+
+  const peakBadge = document.getElementById('travelDailyPeakBadge');
+  if (peakBadge) {
+    peakBadge.textContent = peakVal > 0 ? `Pico: ${fmtMoney(peakVal)} (${fmtDate(peakDate).slice(0, 5)})` : 'Pico: R$ 0,00';
+  }
+
+  const labels = sortedDates.map(d => {
+    if (d === 'Sem data') return d;
+    const parts = d.split('-');
+    return parts.length === 3 ? `${parts[2]}/${parts[1]}` : d;
+  });
+  const data = sortedDates.map(d => dailyTotals[d]);
+
+  if (data.length === 0) {
+    labels.push('Sem despesas');
+    data.push(0);
+  }
+
+  const ctx = canvas.getContext('2d');
+  travelDailyBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: labels,
+      datasets: [{
+        label: 'Gasto diário',
+        data: data,
+        backgroundColor: 'rgba(56, 189, 248, 0.8)',
+        hoverBackgroundColor: '#38bdf8',
+        borderRadius: 8,
+        borderSkipped: false,
+        maxBarThickness: 38
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: {
+          backgroundColor: '#1a1c28',
+          titleColor: '#f0f1f7',
+          bodyColor: '#38bdf8',
+          borderColor: 'rgba(255,255,255,0.1)',
+          borderWidth: 1,
+          padding: 10,
+          displayColors: false,
+          callbacks: {
+            title: function(items) {
+              const idx = items[0].dataIndex;
+              const fullDate = sortedDates[idx];
+              return fullDate && fullDate !== 'Sem data' ? `Dia: ${fmtDate(fullDate)}` : items[0].label;
+            },
+            label: function(context) {
+              return ` Total gasto: ${fmtMoney(context.raw)}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: { display: false },
+          ticks: { color: '#9ba1b6', font: { size: 11 } }
+        },
+        y: {
+          grid: { color: 'rgba(255,255,255,0.06)' },
+          ticks: {
+            color: '#9ba1b6',
+            font: { size: 10 },
+            callback: function(val) {
+              return 'R$ ' + val;
+            }
+          }
+        }
+      }
     }
   });
 }
