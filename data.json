@@ -385,25 +385,10 @@
   "goals": [],
   "cofrinhos": [
     {
-      "id": "szotper",
-      "name": "Bicicleta elétrica",
-      "total": 118,
-      "marked": {},
+      "id": "lnekt33wza",
+      "name": "Carro",
+      "total": 20000,
       "deposits": []
-    },
-    {
-      "id": "m82bppz",
-      "name": "Viagem Itália",
-      "total": 246,
-      "marked": {
-        "10": true
-      },
-      "deposits": [
-        {
-          "num": 10,
-          "date": "2026-05-30"
-        }
-      ]
     }
   ],
   "tasks": [
@@ -533,6 +518,105 @@
           "category": "combustivel",
           "payer": "casal",
           "date": "2026-10-19",
+          "notes": ""
+        },
+        {
+          "id": "rnufesza37",
+          "description": "Shopping (brincadeira)",
+          "amount": 52,
+          "category": "passeio",
+          "payer": "casal",
+          "date": "2026-10-20",
+          "notes": ""
+        },
+        {
+          "id": "omlh3k4z7w",
+          "description": "Restaurante Mar",
+          "amount": 289.3,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-20",
+          "notes": ""
+        },
+        {
+          "id": "94ntwlyve6",
+          "description": "Girafas",
+          "amount": 81.6,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-20",
+          "notes": ""
+        },
+        {
+          "id": "dymgbgchg0",
+          "description": "Ilha do japonês",
+          "amount": 80,
+          "category": "passeio",
+          "payer": "casal",
+          "date": "2026-10-20",
+          "notes": ""
+        },
+        {
+          "id": "gsxvmg4elp",
+          "description": "Estacionamento",
+          "amount": 16,
+          "category": "passeio",
+          "payer": "casal",
+          "date": "2026-10-20",
+          "notes": ""
+        },
+        {
+          "id": "n4ibyj9xqd",
+          "description": "Almoço",
+          "amount": 47.49,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-21",
+          "notes": ""
+        },
+        {
+          "id": "1dcxuvbj6s",
+          "description": "Lembrancinha azulejo",
+          "amount": 60,
+          "category": "compras",
+          "payer": "casal",
+          "date": "2026-10-21",
+          "notes": ""
+        },
+        {
+          "id": "euwwrkdoda",
+          "description": "Confeitaria",
+          "amount": 272.8,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-21",
+          "notes": ""
+        },
+        {
+          "id": "y19vzsmo6d",
+          "description": "Mc Donalds",
+          "amount": 80.8,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-22",
+          "notes": ""
+        },
+        {
+          "id": "pja54j03lm",
+          "description": "Shopping",
+          "amount": 45,
+          "category": "passeio",
+          "payer": "casal",
+          "date": "2026-10-22",
+          "notes": ""
+        },
+        {
+          "id": "yle8r3qyz6",
+          "description": "Açaí",
+          "amount": 45,
+          "category": "alimentacao",
+          "payer": "casal",
+          "date": "2026-10-22",
           "notes": ""
         }
       ]
